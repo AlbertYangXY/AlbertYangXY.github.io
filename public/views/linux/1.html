@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ansible 部署ceph集群 # | APPOPS 文档中心</title>
+    <meta name="description" content="知识积累, 经验传递, 善于记录, 助力成长！">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.cbdfb5c0.css" as="style"><link rel="preload" href="/assets/js/app.0aa0732c.js" as="script"><link rel="preload" href="/assets/js/4.59fb0d5f.js" as="script"><link rel="preload" href="/assets/js/1.c4a30fa2.js" as="script"><link rel="preload" href="/assets/js/12.b3fdb8b4.js" as="script"><link rel="prefetch" href="/assets/js/10.7071aec4.js"><link rel="prefetch" href="/assets/js/11.b6d0b21d.js"><link rel="prefetch" href="/assets/js/13.f861abb5.js"><link rel="prefetch" href="/assets/js/14.e29d2d85.js"><link rel="prefetch" href="/assets/js/15.87444bdf.js"><link rel="prefetch" href="/assets/js/16.b4b963b2.js"><link rel="prefetch" href="/assets/js/17.329c55af.js"><link rel="prefetch" href="/assets/js/18.d273e926.js"><link rel="prefetch" href="/assets/js/19.def6468e.js"><link rel="prefetch" href="/assets/js/20.752e1033.js"><link rel="prefetch" href="/assets/js/5.5b407488.js"><link rel="prefetch" href="/assets/js/6.d8051498.js"><link rel="prefetch" href="/assets/js/7.368b530c.js"><link rel="prefetch" href="/assets/js/8.fa1fe865.js"><link rel="prefetch" href="/assets/js/9.ab4d69d8.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.e10a1484.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cbdfb5c0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container" data-v-319dd33c><div data-v-319dd33c><div id="loader-wrapper" class="loading-wrapper" data-v-4b73742e data-v-319dd33c data-v-319dd33c><div class="loader-main" data-v-4b73742e><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-1e2a0cc0 data-v-319dd33c data-v-319dd33c><h3 class="title" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0>APPOPS 文档中心</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><input type="password" value="" data-v-1e2a0cc0> <span data-v-1e2a0cc0>Konck! Knock!</span> <button data-v-1e2a0cc0>OK</button></label> <div class="footer" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><span data-v-1e2a0cc0><i class="iconfont reco-theme" data-v-1e2a0cc0></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-1e2a0cc0>vuePress-theme-reco</a></span> <span data-v-1e2a0cc0><i class="iconfont reco-copyright" data-v-1e2a0cc0></i> <a data-v-1e2a0cc0><span data-v-1e2a0cc0>yuanyuan-g</span>
+            
+          <span data-v-1e2a0cc0>2017 - </span>
+          2020
+        </a></span></div></div> <div class="hide" data-v-319dd33c><header class="navbar" data-v-319dd33c><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="APPOPS 文档中心" class="logo"> <span class="site-name">APPOPS 文档中心</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系方式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="mailto:g-game-ops@360.cn" class="nav-link external"><i class="iconfont reco-mail"></i>
+  Email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-319dd33c></div> <aside class="sidebar" data-v-319dd33c><div class="personal-info-wrapper" data-v-6c8ffc9c><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-6c8ffc9c> <h3 class="name" data-v-6c8ffc9c>
+    yuanyuan-g
+  </h3> <div class="num" data-v-6c8ffc9c><div data-v-6c8ffc9c><h3 data-v-6c8ffc9c>1</h3> <h6 data-v-6c8ffc9c>文章</h6></div> <div data-v-6c8ffc9c><h3 data-v-6c8ffc9c>3</h3> <h6 data-v-6c8ffc9c>标签</h6></div></div> <hr data-v-6c8ffc9c></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系方式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="mailto:g-game-ops@360.cn" class="nav-link external"><i class="iconfont reco-mail"></i>
+  Email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>运维相关技术</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/linux/" class="sidebar-link">CentOS7 内核升级</a></li><li><a href="/views/linux/1.html" class="active sidebar-link">Ansible 部署ceph集群 #</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/views/linux/1.html#_1-安装" class="sidebar-link">1.安装</a></li><li class="sidebar-sub-header"><a href="/views/linux/1.html#_2-配置与使用" class="sidebar-link">2.配置与使用</a></li><li class="sidebar-sub-header"><a href="/views/linux/1.html#_3-配置" class="sidebar-link">3.配置</a></li></ul></li><li><a href="/views/linux/2.html" class="sidebar-link">Calico 笔记 #</a></li><li><a href="/views/linux/3.html" class="sidebar-link">Helm 介绍 #</a></li><li><a href="/views/linux/4.html" class="sidebar-link">kubernetes DashBoard配置 #</a></li><li><a href="/views/linux/5.html" class="sidebar-link">kubernetes 学习笔记 #</a></li><li><a href="/views/linux/6.html" class="sidebar-link">NodePorts，LoadBalancer，Ingress的区别 #</a></li><li><a href="/views/linux/7.html" class="sidebar-link">Prometheus 学习笔记 #</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-1e2a0cc0 data-v-319dd33c><h3 class="title" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0></h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><input type="password" value="" data-v-1e2a0cc0> <span data-v-1e2a0cc0>Konck! Knock!</span> <button data-v-1e2a0cc0>OK</button></label> <div class="footer" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><span data-v-1e2a0cc0><i class="iconfont reco-theme" data-v-1e2a0cc0></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-1e2a0cc0>vuePress-theme-reco</a></span> <span data-v-1e2a0cc0><i class="iconfont reco-copyright" data-v-1e2a0cc0></i> <a data-v-1e2a0cc0><span data-v-1e2a0cc0>yuanyuan-g</span>
+            
+          <span data-v-1e2a0cc0>2017 - </span>
+          2020
+        </a></span></div></div> <div data-v-319dd33c><main class="page"><div class="page-title" style="display:none;"><h1>Ansible 部署ceph集群 #</h1> <hr> <div data-v-484a899e><i class="iconfont reco-account" data-v-484a899e><span data-v-484a899e>yuanyuan-g</span></i> <!----> <i class="iconfont reco-eye" data-v-484a899e><span id="/views/linux/1.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-484a899e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <!----></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="ansible-部署ceph集群"><a href="#ansible-部署ceph集群" class="header-anchor">#</a> Ansible 部署ceph集群</h1> <p>2020/3/23 10:14:57</p> <hr> <h2 id="_1-安装"><a href="#_1-安装" class="header-anchor">#</a> 1.安装</h2> <h3 id="github"><a href="#github" class="header-anchor">#</a> GitHub</h3> <h4 id="克隆存储库："><a href="#克隆存储库：" class="header-anchor">#</a> 克隆存储库：</h4> <div class="language- extra-class"><pre><code>$ git clone https://github.com/ceph/ceph-ansible.git
+$ git checkout $branch
+</code></pre></div><h4 id="barnch说明："><a href="#barnch说明：" class="header-anchor">#</a> barnch说明：</h4> <ul><li>stable-3.0支持Ceph版本jewel和luminous。该分支需要Ansible版本2.4。</li> <li>stable-3.1支持Ceph版本luminous和mimic。该分支需要Ansible版本2.4。</li> <li>stable-3.2支持Ceph版本luminous和mimic。该分支需要Ansible版本2.6。</li> <li>stable-4.0支持Ceph版本nautilus。该分支需要Ansible版本2.8。</li> <li>master支持Ceph的master分支。该分支需要Ansible版本2.8。</li></ul> <h4 id="安装ansible和依赖-如果ansible存在则可注释掉ansible的安装-："><a href="#安装ansible和依赖-如果ansible存在则可注释掉ansible的安装-：" class="header-anchor">#</a> 安装ansible和依赖(如果ansible存在则可注释掉ansible的安装)：</h4> <div class="language- extra-class"><pre><code>$ pip install -r requirements.txt
+</code></pre></div><h2 id="_2-配置与使用"><a href="#_2-配置与使用" class="header-anchor">#</a> 2.配置与使用</h2> <h3 id="inventory-文件："><a href="#inventory-文件：" class="header-anchor">#</a> inventory 文件：</h3> <div class="language- extra-class"><pre><code>[mons]
+mon1 ansible_host=10.142.96.71
+mon2 ansible_host=10.142.96.72
+mon3 ansible_host=10.142.96.73
+[mgrs]
+mgr1 ansible_host=10.142.96.71
+mgr2 ansible_host=10.142.96.72
+mgr3 ansible_host=10.142.96.73
+[osds]
+osd1 ansible_host=10.142.96.71
+osd2 ansible_host=10.142.96.72
+osd3 ansible_host=10.142.96.73
+osd4 ansible_host=10.142.96.135
+osd5 ansible_host=10.142.96.136
+</code></pre></div><h3 id="playbook剧本文件"><a href="#playbook剧本文件" class="header-anchor">#</a> playbook剧本文件</h3> <ul><li>重命名示例剧本： mv site.yml.sample site.yml</li> <li>根据集群的需要修改剧本</li></ul> <h3 id="配置验证"><a href="#配置验证" class="header-anchor">#</a> 配置验证</h3> <p>ceph-ansible项目通过ceph-validate角色提供了配置验证。</p> <p>该ceph-validate角色当前支持以下osd方案的正确配置验证：</p> <ul><li>collocated</li> <li>non-collocated</li> <li>lvm</li></ul> <p>以下安装选项也由ceph-validate角色验证:</p> <ul><li>ceph_origin set to distro</li> <li>ceph_origin set to repository</li> <li>ceph_origin set to local</li> <li>ceph_repository set to rhcs</li> <li>ceph_repository set to dev</li> <li>ceph_repository set to community</li></ul> <h3 id="安装方法"><a href="#安装方法" class="header-anchor">#</a> 安装方法</h3> <p>以下是通过不同渠道安装Ceph的所有可用选项。</p> <p>主要支持三种安装方法，全部由ceph_origin变量管理：</p> <ul><li>repository：意味着您将通过新的存储库安装Ceph。后来以下之间选择community，rhcs或dev。这些选项将通过ceph_repository变量公开。</li> <li>distro：表示不会添加单独的repo文件，并且您将获得Linux发行版中包含的Ceph任何版本。</li> <li>local：表示将从本地计算机复制Ceph二进制文件（未经良好测试，使用后果自负）</li></ul> <h4 id="来源：repository"><a href="#来源：repository" class="header-anchor">#</a> 来源：Repository</h4> <p>如果ceph_origin设置为repository，您现在可以在由ceph_repository选项控制的两个存储库之间进行选择：</p> <ul><li>community：从官方社区Ceph仓库http://download.ceph.com获取程序包</li> <li>rhcs：表示您是Red Hat客户，此外，您还必须通过ceph_repository_type（cdn或iso）选择存储库类型</li> <li>dev：从基于gitbuilder的软件包系统萨满中获取软件包</li> <li>uca：从Ubuntu Cloud Archive获取软件包</li> <li>custom：从特定存储库获取软件包</li></ul> <h4 id="社区存储库"><a href="#社区存储库" class="header-anchor">#</a> 社区存储库</h4> <p>如果ceph_repository设置为community，则默认情况下将从http://download.ceph.com安装您的软件包，可以通过调整进行更改ceph_mirror。最后一步是选择要安装的Ceph版本，为此您必须进行相应设置ceph_stable_release。例如，。ceph_stable_release: luminous</p> <h4 id="rhcs库"><a href="#rhcs库" class="header-anchor">#</a> RHCS库</h4> <p>RHCS是来自Red Hat（Ceph的企业版）的Red Hat Ceph Storage产品。如果ceph_repository设置为rhcs，将从Red Hat来源安装软件包。</p> <p>此外，您将必须通过选择存储库类型ceph_repository_type，可以是cdn或iso。要选择特定版本的RHCS，您可以相应地设置ceph_rhcs_version变量，例如：。ceph_rhcs_version: 2</p> <h4 id="uca资料库"><a href="#uca资料库" class="header-anchor">#</a> UCA资料库</h4> <p>如果ceph_repository将设置为uca，则默认情况下将从http://ubuntu-cloud.archive.canonical.com/ubuntu安装您要安装的软件包，可以通过进行调整来进行更改ceph_stable_repo_uca。您还可以通过调整来确定Ceph软件包应来自哪个OpenStack版本ceph_stable_openstack_release_uca。例如，。ceph_stable_openstack_release_uca: queens</p> <h4 id="开发仓库"><a href="#开发仓库" class="header-anchor">#</a> 开发仓库</h4> <p>如果ceph_repository设置为dev，则默认情况下将从https://shaman.ceph.com/安装您的软件包，无法进行调整。您显然可以借助来决定要安装哪个分支 ceph_dev_branch（默认为'master'）。此外，您可以使用来指定SHA1 ceph_dev_sha1，默认为“最新”（与最新构建的一样）。</p> <h4 id="自定义存储库"><a href="#自定义存储库" class="header-anchor">#</a> 自定义存储库</h4> <p>如果ceph_repository设置为custom，则默认情况下将从所需的存储库安装软件包。该存储库指定了ceph_custom_repo，例如：。ceph_custom_repo: https://server.domain.com/ceph-custom-repo</p> <h3 id="来源：发行版"><a href="#来源：发行版" class="header-anchor">#</a> 来源：发行版</h3> <p>如果ceph_origin设置为distro，则不会添加单独的回购文件，并且您将获得Linux发行版中包含的Ceph版本。</p> <h3 id="来源：本地"><a href="#来源：本地" class="header-anchor">#</a> 来源：本地</h3> <p>如果ceph_origin设置为local，则将从本地计算机复制ceph二进制文件（未经良好测试，使用后果自负）</p> <h2 id="_3-配置"><a href="#_3-配置" class="header-anchor">#</a> 3.配置</h2> <p>您的Ceph集群的配置将通过使用ceph-ansible提供的ansible变量进行设置。所有这些选项及其默认值都在项目group_vars/根目录下的目录中定义ceph-ansible。Ansible将在group_vars/与您的清单文件或剧本相关的目录中使用配置。在group_vars/目录内部，有许多示例Ansible配置文件，它们通过文件名与每个Ceph守护程序组相关。例如，osds.yml.sample包含OSD守护程序的所有默认配置。该all.yml.sample 文件是一个特殊group_vars文件，适用于群集中的所有主机。</p> <p>在最基本的级别上，您必须告诉ceph-ansible您要安装的Ceph版本，安装方法，群集网络设置以及如何配置OSD。要开始配置，请重命名group_vars/您要使用的每个文件，以使其不包含.sample 在文件名末尾，请取消注释要更改的选项并提供您自己的值。</p> <p>octopus使用lvm batch方法部署Ceph 上游版本的示例配置如下所示group_vars/all.yml：</p> <div class="language- extra-class"><pre><code>ceph_origin: repository
+ceph_repository: community
+ceph_stable_release: octopus
+public_network: &quot;192.168.3.0/24&quot;
+cluster_network: &quot;192.168.4.0/24&quot;
+monitor_interface: eth1
+devices:
+  - '/dev/sda'
+  - '/dev/sdb'
+</code></pre></div><p>在所有安装中都需要更改以下配置选项，但是可能还有其他必需的选项，具体取决于您的OSD方案选择或群集的其他方面。</p> <ul><li>ceph_origin</li> <li>ceph_stable_release</li> <li>public_network</li> <li>monitor_interface 要么 monitor_address</li></ul> <p>部署RGW实例时，需要设置radosgw_interface或radosgw_addressconfig选项。</p> <h3 id="ceph-conf配置文件"><a href="#ceph-conf配置文件" class="header-anchor">#</a> ceph.conf配置文件</h3> <p>支持的定义您的方法ceph.conf是使用ceph_conf_overrides变量。这使您可以使用INI格式指定配置选项。此变量可用于覆盖已经在中定义的部分ceph.conf（请参阅：）roles/ceph-config/templates/ceph.conf.j2或提供新的配置选项。</p> <h4 id="ceph-conf支持以下各节："><a href="#ceph-conf支持以下各节：" class="header-anchor">#</a> ceph.conf支持以下各节：</h4> <ul><li>[global]</li> <li>[mon]</li> <li>[osd]</li> <li>[mds]</li> <li>[client.rgw.{instance_name}]</li></ul> <p>一个例子：</p> <div class="language- extra-class"><pre><code>ceph_conf_overrides:
+   global:
+ foo: 1234
+ bar: 5678
+   osd:
+ osd_mkfs_type: ext4
+</code></pre></div><p>以下各节中提供了有关配置每种Ceph守护程序类型的完整文档。</p> <h4 id="osd配置"><a href="#osd配置" class="header-anchor">#</a> OSD配置</h4> <p>过去通过选择OSD方案并提供该方案所需的配置来设置OSD配置。从稳定版4.0中的nautilus开始，唯一可用的方案是lvm。</p> <h3 id="lvm"><a href="#lvm" class="header-anchor">#</a> LVM</h3> <p>这个OSD场景使用Ceph -volume来创建OSD，主要使用LVM，并且只有当Ceph版本是luminous或者更新的时候才可用。它是自动启用的。</p> <p>其他(可选)支持的设置:</p> <ul><li>osd_objectstore:为OSD设置Ceph objectstore。可用的选项有filestore或bluestore。你只能选择bluestore与Ceph发布是luminous或更新。如果未设置，则默认为bluestore。</li> <li>dmcrypt:使用dmcrypt在OSDs上启用Ceph的加密。</li> <li>如果未设置，则默认为false。</li> <li>osds_per_device:为每个设备提供超过1个OSD(未设置时的默认值)。</li></ul> <h3 id="简单配置"><a href="#简单配置" class="header-anchor">#</a> 简单配置</h3> <p>使用这种方法，关于设备如何配置以提供OSD的大部分决策都是由Ceph工具做出的(本例中是ceph-volume lvm批处理)。在给定设备输入的情况下，几乎没有修改OSD组成方式的空间。
+要使用此配置，必须使用将用于供应OSDs的原始设备路径填充设备选项。</p> <blockquote><p>注意:
+原始设备必须是“干净的”，没有gpt分区表或逻辑卷。</p></blockquote> <p>例如，对于具有/dev/sda和/dev/sdb的节点，其配置为:</p> <div class="language- extra-class"><pre><code>devices:
+  - /dev/sda
+  - /dev/sdb
+</code></pre></div><p>在上面的例子中，如果两个设备都是旋转驱动器，就会创建两个osd，每个osd都有自己的配置日志。</p> <p>其他供应策略是可能的，通过混合纺纱和固态设备，例如:</p> <div class="language- extra-class"><pre><code>devices:
+  - /dev/sda
+  - /dev/sdb
+  - /dev/nvme0n1
+</code></pre></div><p>与最初的示例类似，这将最终产生两个osd，但是数据将放置在较慢的旋转驱动器(/dev/sda，和/dev/sdb)上，而日志将放置在较快的固态设备/dev/nvme0n1上ceph-volume工具在“batch”子命令部分详细描述了这一点</p> <p>这个选项也可以与osd_auto_discovery一起使用，这意味着您不需要直接填充设备，ansible找到的任何适当的设备都将被使用。</p> <div class="language- extra-class"><pre><code>osd_auto_discovery: true
+</code></pre></div><p>其他(可选)支持的设置:</p> <p>crush_device_class:为使用此方法创建的所有osd设置挤压设备类(使用简单配置方法不可能有每个osd挤压设备类)。值必须是字符串，如crush_device_class: &quot;ssd&quot;</p> <h3 id="高级配置"><a href="#高级配置" class="header-anchor">#</a> 高级配置</h3> <p>当在设置设备时需要更细粒度的控制以及如何安排它们以提供OSD时，这种配置非常有用。它需要现有的卷组和逻辑卷设置(ceph-volume不会创建这些)。
+要使用此配置，必须使用逻辑卷和卷组填充lvm_volumes选项。此外，绝对路径的分区可以用于journal, block.db和block.wal</p> <blockquote><p>注意:
+此配置使用ceph-volume lvm创建来供应OSDs</p></blockquote> <h3 id="支持的lvm-volumes配置设置："><a href="#支持的lvm-volumes配置设置：" class="header-anchor">#</a> 支持的lvm_volumes配置设置：</h3> <ul><li>data：逻辑卷名称或原始设备的完整路径（将使用原始设备的100％创建LV）</li> <li>data_vg：卷组名，如果是逻辑卷则为必需data。</li> <li>crush_device_class：生成的OSD的CRUSH设备类名称，允许设置为每个OSD设置设备类，这与crush_device_class 为所有OSD 设置设备类的全局设置不同。</li></ul> <blockquote><p>注意：如果要crush_device_class在使用时为OSD 设置OSD，则devices必须使用全局crush_device_class 选项进行设置，如上所示。devices像for那样使用时，无法为每个OSD定义特定的CRUSH设备类lvm_volumes。</p></blockquote> <h4 id="filestore-对象库变量："><a href="#filestore-对象库变量：" class="header-anchor">#</a> filestore 对象库变量：</h4> <ul><li>journal：逻辑卷名或分区的完整路径。</li> <li>journal_vg：卷组名，如果是逻辑卷则为必需journal。</li></ul> <blockquote><p>警告:
+每个条目必须唯一，不允许重复值</p></blockquote> <h4 id="bluestore-对象库变量："><a href="#bluestore-对象库变量：" class="header-anchor">#</a> bluestore 对象库变量：</h4> <ul><li>db：逻辑卷名或分区的完整路径。</li> <li>db_vg：卷组名，如果是逻辑卷则为必需db。</li> <li>wal：逻辑卷名或分区的完整路径。</li> <li>wal_vg：卷组名，如果是逻辑卷则为必需wal。</li></ul> <blockquote><p>注意
+这些bluestore变量是可选的优化。Bluestore的 db，wal只会从速度更快的设备中受益。可以使用单个原始设备创建一个蓝存储OSD。</p></blockquote> <blockquote><p>警告
+每个条目必须唯一，不允许重复值</p></blockquote> <h4 id="bluestore-使用原始设备的示例："><a href="#bluestore-使用原始设备的示例：" class="header-anchor">#</a> bluestore 使用原始设备的示例：</h4> <div class="language- extra-class"><pre><code>osd_objectstore: bluestore
+lvm_volumes:
+  - data: /dev/sda
+  - data: /dev/sdb
+</code></pre></div><blockquote><p>注意
+在这种情况下，将使用100％的设备创建卷组和逻辑卷。</p></blockquote> <h4 id="bluestore-逻辑卷示例："><a href="#bluestore-逻辑卷示例：" class="header-anchor">#</a> bluestore 逻辑卷示例：</h4> <div class="language- extra-class"><pre><code>osd_objectstore: bluestore
+lvm_volumes:
+  - data: data-lv1
+	data_vg: data-vg1
+  - data: data-lv2
+	data_vg: data-vg2
+</code></pre></div><blockquote><p>注意
+卷组和逻辑卷必须存在。</p></blockquote> <h4 id="bluestore定义wal和db逻辑卷示例："><a href="#bluestore定义wal和db逻辑卷示例：" class="header-anchor">#</a> bluestore定义wal和db逻辑卷示例：</h4> <div class="language- extra-class"><pre><code>osd_objectstore: bluestore
+lvm_volumes:
+  - data: data-lv1
+	data_vg: data-vg1
+	db: db-lv1
+	db_vg: db-vg1
+	wal: wal-lv1
+	wal_vg: wal-vg1
+  - data: data-lv2
+	data_vg: data-vg2
+	db: db-lv2
+	db_vg: db-vg2
+	wal: wal-lv2
+	wal_vg: wal-vg2
+</code></pre></div><blockquote><p>注意
+卷组和逻辑卷必须存在。</p></blockquote> <h4 id="filestore-逻辑卷示例："><a href="#filestore-逻辑卷示例：" class="header-anchor">#</a> filestore 逻辑卷示例：</h4> <div class="language- extra-class"><pre><code>osd_objectstore: filestore
+lvm_volumes:
+  - data: data-lv1
+	data_vg: data-vg1
+	journal: journal-lv1
+	journal_vg: journal-vg1
+  - data: data-lv2
+	data_vg: data-vg2
+	journal: journal-lv2
+	journal_vg: journal-vg2
+</code></pre></div><blockquote><p>注意
+卷组和逻辑卷必须存在。</p></blockquote></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----></main> <!----> <div style="display:none;" data-v-319dd33c data-v-319dd33c><div class="comments-wrapper" data-v-319dd33c><div class="valine-wrapper"><div id="valine"></div></div></div></div></div></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-a81d141e data-v-a81d141e><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-a81d141e><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-a81d141e></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-a81d141e></path></svg></div><div class="reco-bgm-panel" data-v-128600c6><audio id="bgm" src="https://cdn-image.tsanfer.xyz/music/Andreas%20Waldetoft%2CMia%20Stegmar%20-%20Faster%20Than%20Light.mp3" data-v-128600c6></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-128600c6 data-v-41bcba48 data-v-128600c6><img src="https://p1.music.126.net/Gxv6d9W4Yd9q9WNHPpi8rw==/1379887104073348.jpg" data-v-128600c6></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-128600c6 data-v-41bcba48 data-v-128600c6><div class="reco-bgm-cover" style="background-image:url(https://p1.music.126.net/Gxv6d9W4Yd9q9WNHPpi8rw==/1379887104073348.jpg);" data-v-128600c6><div class="mini-operation" style="display:none;" data-v-128600c6><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-128600c6></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-128600c6></i></div> <div class="falut-message" style="display:none;" data-v-128600c6>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-128600c6 data-v-41bcba48 data-v-128600c6><div class="info-box" data-v-128600c6><i class="reco-bgm reco-bgm-music music" data-v-128600c6></i>Faster Than Light</div> <div class="info-box" data-v-128600c6><i class="reco-bgm reco-bgm-artist" data-v-128600c6></i>Andreas Waldetoft / Mia Stegmar</div> <div class="reco-bgm-progress" data-v-128600c6><div class="progress-bar" data-v-128600c6><div class="bar" data-v-128600c6></div></div></div> <div class="reco-bgm-operation" data-v-128600c6><i class="reco-bgm reco-bgm-last last" data-v-128600c6></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-128600c6></i> <i class="reco-bgm reco-bgm-play play" data-v-128600c6></i> <i class="reco-bgm reco-bgm-next next" data-v-128600c6></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-128600c6></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-128600c6></i> <div class="volume-bar" data-v-128600c6><div class="bar" data-v-128600c6></div></div></div></div> <div class="reco-bgm-left-box" data-v-128600c6 data-v-41bcba48 data-v-128600c6><i class="reco-bgm reco-bgm-left" data-v-128600c6></i></div></div></div><div class="reading-progress top" data-v-21b39eda><div class="progress" data-v-21b39eda></div></div></div></div>
+    <script src="/assets/js/app.0aa0732c.js" defer></script><script src="/assets/js/4.59fb0d5f.js" defer></script><script src="/assets/js/1.c4a30fa2.js" defer></script><script src="/assets/js/12.b3fdb8b4.js" defer></script>
+  </body>
+</html>

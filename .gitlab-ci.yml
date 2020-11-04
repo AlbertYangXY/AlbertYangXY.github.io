@@ -1,27 +1,9 @@
-image: ruby:latest
-
-variables:
-  JEKYLL_ENV: production
-  LC_ALL: C.UTF-8
-
-before_script:
-  - gem install bundler
-  - bundle install
-
-test:
-  stage: test
-  script:
-  - bundle exec jekyll build -d test
-  artifacts:
-    paths:
-    - test
-  except:
-  - master
-
 pages:
+  tags:
+    - docs
   stage: deploy
   script:
-  - bundle exec jekyll build -d public
+    - pwd
   artifacts:
     paths:
     - public
