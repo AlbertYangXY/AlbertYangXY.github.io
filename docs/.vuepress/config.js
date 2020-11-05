@@ -2,12 +2,12 @@ module.exports = {
     title: '个人主页', 
     description: '杨晓翼的博客',
 	"dest": "docs/.vuepress/dist",
-	"base": "/",
+    "base": "/",
     head: [
         ['link', { rel: 'icon', href: '/img/logo.ico' }],
         ['link', { rel: 'manifest', href: '/manifest.json' }],
-    ]，
-	themeConfig: {
+    ],
+       themeConfig: {
         nav: [
             { text: '主页', link: '/' },
             { text: '博文',
@@ -24,7 +24,6 @@ module.exports = {
             '/android/': [
                         "",
                         "android1", 
-                         ...
                          ],
                 "/ios/":[
                         "",
@@ -33,7 +32,6 @@ module.exports = {
                 "/web/":[
                         "",
                         "web1",
-                        ...
                              ],
             },
         sidebarDepth: 2,
