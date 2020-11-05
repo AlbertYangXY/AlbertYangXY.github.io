@@ -15,7 +15,7 @@ git add -A
 git commit -m 'deploy'
 
 #git push -f git@github.com:weekyuan/blog.git master:gh-pages
-git push -f git@github.com:weekyuan/weekyuan.github.io.git master
+git push -f git@github.com:AlbertYangXY/AlbertYangXY.github.io.git master
 
 cd -
-rm -rf docs/.vuepress/dist
+#rm -rf docs/.vuepress/dist
