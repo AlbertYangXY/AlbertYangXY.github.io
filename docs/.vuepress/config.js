@@ -1,7 +1,7 @@
 module.exports = {
     title: '个人主页', 
     description: '杨晓翼的博客',
-	"dest": "public",
+	"dest": "docs/.vuepress/dist",
 	"base": "/",
     head: [
         ['link', { rel: 'icon', href: '/img/logo.ico' }],
