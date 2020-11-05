@@ -1,17 +1,22 @@
 {
-  "name": "",
+  "name": "myblog",
   "version": "1.0.0",
-  "author": "reco_luan",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev . --open --host \"localhost\"",
-    "build": "vuepress build ."
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+	"deploy": "bash deploy.sh"
   },
-  "devDependencies": {
-    "vuepress": "1.5.4",
-    "vuepress-theme-reco": "1.5.7"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertYangXY/AlbertYangXY.github.io.git"
   },
-  "dependencies": {
-    "vue-class-component": "^7.2.3"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlbertYangXY/AlbertYangXY.github.io/issues"
   },
-  "description": ""
+  "homepage": "https://github.com/AlbertYangXY/AlbertYangXY.github.io#readme"
 }
