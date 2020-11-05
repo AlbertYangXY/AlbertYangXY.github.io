@@ -1,6 +1,5 @@
 module.exports = {
-	"base": "/",
-  "title": "hello ，Welcome to 杨晓翼的博客",
+  "title": "",
   "description": "",
   "dest": "public",
   "head": [
